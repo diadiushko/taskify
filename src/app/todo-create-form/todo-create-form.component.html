@@ -1,0 +1,27 @@
+<div class="modal-wrapper">
+  <div class="modal">
+    <button type="button" class="modal-close" (click)="modalRemove()">&times;</button>
+    <span>New Todo</span>
+    <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+
+      <div class="todo-input-control">
+        <label for="todo-input">Todo Label</label>
+        <input id="todo-input" type="text" formControlName="name" placeholder="todo...">
+        <small class="validator" *ngIf="form.get('name')?.errors?.required && form.get('name')?.touched">
+          This field shall be fulfilled!</small>
+      </div>
+
+      <div class="todo-input-control">
+        <label for="type-select">Todo Specificity</label>
+        <select formControlName="type" id="type-select">
+          <option *ngFor="let todoStat of todosService.todoTypes"
+                  [value]="todoStat.type"
+                  [style.color]="todoStat.color">
+            {{todoStat.type | titlecase}}</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Create</button>
+    </form>
+  </div>
+</div>

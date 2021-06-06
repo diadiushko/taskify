@@ -1,0 +1,17 @@
+<div class="container" #modalRoot>
+
+  <div class="nav-button" (click)="onClick()">
+    <img [src]="buttonInfo.imgUrl" alt="nav button">
+    <span class="nav-text">{{buttonInfo.name}}</span>
+    <span class="nav-add" *ngIf="buttonInfo.addition"
+          [style.background]="buttonInfo.addition.color">
+      {{todosService.todos | compTodoCounter: buttonInfo.addition.done}}
+    </span>
+  </div>
+
+  <div class="nav-stats" *ngIf="buttonInfo.addition" [class.active]="isOpen">
+    <app-stat-block *ngFor="let type of todosService.todoTypes" [typeInfo]="type"
+                    [done]="buttonInfo.addition.done"></app-stat-block>
+  </div>
+
+</div>

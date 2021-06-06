@@ -1,0 +1,7 @@
+<div class="stat">
+  <div class="stat-info">
+    <div class="circle" [style.background]="typeInfo.color"></div>
+    <span class="stat-title">{{typeInfo.type}}</span>
+  </div>
+  <span class="stat-quantity">{{todosService.todos | todoTypeCount: typeInfo.type: done}}</span>
+</div>

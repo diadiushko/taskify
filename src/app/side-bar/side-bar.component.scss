@@ -1,0 +1,81 @@
+@import "../../styles";
+
+.side-bar {
+  position: relative;
+  width: 20vw;
+  background: #0F0F0F;
+  height: 100vh;
+  @include flex(column, flex-start, center);
+  row-gap: 10rem;
+}
+
+nav {
+  @include flex(column, center, center);
+  row-gap: 15px;
+}
+
+.logo {
+  padding-top: 50px;
+  @include flex(row, space-between, center);
+  column-gap: 25px;
+
+  h1 {
+    color: white;
+    font-family: Staatliches, sans-serif;
+    font-size: 3.6rem;
+  }
+
+}
+
+#left1, #left2, #left3, #left4 {
+  transform-origin: bottom right;
+}
+
+#right1, #right2, #right3, #right4 {
+  transform-origin: bottom left;
+  animation: RightWings 2s ease-in-out alternate infinite;
+}
+
+#left1 {
+  animation: LeftWings 2s ease-in-out alternate infinite;
+}
+
+#left2 {
+  animation: LeftWings 2s .2s ease-in-out alternate infinite;
+}
+
+#left3 {
+  animation: LeftWings 2s .4s ease-in-out alternate infinite;
+}
+
+#left4 {
+  animation: LeftWings 2s .6s ease-in-out alternate infinite;
+}
+
+#right1 {
+  animation: RightWings 2.5s ease-in-out alternate infinite;
+}
+
+#right2 {
+  animation: RightWings 2.5s .2s ease-in-out alternate infinite;
+}
+
+#right3 {
+  animation: RightWings 2.5s .4s ease-in-out alternate infinite;
+}
+
+#right4 {
+  animation: RightWings 2.5s .6s ease-in-out alternate infinite;
+}
+
+@keyframes LeftWings {
+  to {
+    transform: rotateZ(5deg);
+  }
+}
+
+@keyframes RightWings {
+  to {
+    transform: rotateZ(-5deg);
+  }
+}

@@ -1,0 +1,15 @@
+<div class="panel-wrapper">
+  <div class="panel">
+    <h2 class="panel-title">Ongoing Todos</h2>
+    <label for="sortBy">Sorted By:</label>
+    <select id="sortBy" [(ngModel)]="sortBy">
+      <option value="date">Date</option>
+      <option value="name">Alphabet</option>
+      <option value="completed">Readiness</option>
+    </select>
+    <div class="todos-panel">
+      <app-panel-type *ngFor="let todoType of todosService.todoTypes" [todoType]="todoType"
+                      [sortBy]="sortBy"></app-panel-type>
+    </div>
+  </div>
+</div>

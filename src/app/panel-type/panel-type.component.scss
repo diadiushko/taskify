@@ -1,0 +1,30 @@
+@import "../../styles";
+
+.todo-type-block {
+  width: 320px;
+  height: 600px;
+  background: rgba(198, 198, 198, 0.67);
+  border-radius: 10px;
+
+  h3 {
+    font-family: Staatliches, sans-serif;
+    text-align: center;
+    font-size: 3.6rem;
+    padding-top: 15px;
+    margin-bottom: 25px;
+  }
+}
+
+.todos {
+  overflow-y: scroll;
+  height: 80%;
+  &::-webkit-scrollbar {
+    width: 1rem;
+    background: #000000;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 5px;
+  }
+}

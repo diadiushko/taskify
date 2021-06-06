@@ -1,0 +1,117 @@
+@import "../../styles";
+
+.modal-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include flex(row, center, center);
+  background: rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  animation: ModalWrap .4s linear forwards;
+  z-index: 1000;
+}
+
+.modal {
+  width: 400px;
+  height: 500px;
+  background: white;
+  border-radius: 10px;
+  @include flex(column, center, center);
+  row-gap: 25px;
+  position: relative;
+  border: 3px solid #212121;
+  transform: translateY(-200%);
+  animation: Modal .7s ease forwards;
+
+  span {
+    position: absolute;
+    font-family: Staatliches, sans-serif;
+    font-size: 4.6rem;
+    top: 5%;
+  }
+}
+
+.modal form {
+  @include flex(column, center, center);
+  row-gap: 25px;
+  flex: 3;
+
+  label {
+    font-family: Staatliches, sans-serif;
+    font-size: 2.4rem;
+  }
+
+  input, select {
+    width: 80%;
+    min-width: 150px;
+    font-size: 2rem;
+    padding: 5px;
+    border: 2px solid rgba(0, 0, 0, .25);
+    border-radius: 5px;
+    font-family: Poppins, sans-serif;
+  }
+}
+
+.todo-input-control {
+  @include flex(column, center, center);
+  row-gap: 15px;
+  position: relative;
+
+  small {
+    color: red;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(110%);
+  }
+}
+
+button[type="submit"] {
+  font-family: Staatliches, sans-serif;
+  font-size: 2.8rem;
+  padding: 5px 25px;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #212121;
+  transition: background linear .2s;
+
+  &.disabled {
+    color: #949494;
+    background: #6e6e6e;
+    cursor: alias;
+  }
+
+  &:not([disabled]):hover {
+    background: #070707;
+    cursor: pointer;
+  }
+}
+
+.modal {
+  .modal-close {
+    background: transparent;
+    position: absolute;
+    font-size: 5rem;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 0 5px;
+    color: #ffffff;
+    background: #000;
+    border-top-right-radius: 5px;
+  }
+}
+
+@keyframes ModalWrap {
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes Modal {
+  to {
+    transform: translateY(0);
+  }
+}

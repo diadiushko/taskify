@@ -1,0 +1,54 @@
+@import "../../styles";
+
+.panel-wrapper {
+  background: #171717;
+  width: 80vw;
+  height: 100vh;
+  @include flex(row, center, center);
+}
+
+.todos-panel {
+  @include flex(row, space-around, center);
+  column-gap: 30px;
+  margin-top: 50px;
+}
+
+.panel-title {
+  font-family: Staatliches, sans-serif;
+  font-size: 4.8rem;
+  color: #ffffff;
+  position: relative;
+  font-weight: 200;
+  margin-bottom: 15px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 2px;
+    background: #E98181;
+    bottom: -5%;
+    left: 0;
+    border-radius: 5px;
+  }
+}
+
+label[for="sortBy"] {
+  font-family: Staatliches, sans-serif;
+  font-size: 2.4rem;
+  color: #ffffff;
+}
+
+select {
+  background: transparent;
+  border: 1px solid white;
+  font-family: Staatliches, sans-serif;
+  color: #ffffff;
+  font-size: 2.4rem;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+option {
+  background: #171717;
+}

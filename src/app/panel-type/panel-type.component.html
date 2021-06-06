@@ -1,0 +1,6 @@
+<div class="todo-type-block">
+  <h3 [style.color]="todoType.color">{{todoType.type}}</h3>
+  <div class="todos">
+    <app-todo *ngFor="let todo of todosService.todos | todosSelector: todoType.type: sortBy" [todo]="todo"></app-todo>
+  </div>
+</div>

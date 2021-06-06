@@ -1,0 +1,25 @@
+@import "../../styles";
+
+.stat {
+  width: 300px;
+  @include flex(row, space-between, center);
+  color: white;
+  font-family: Staatliches, sans-serif;
+  padding: 5px 30px;
+  font-size: 1.8rem;
+}
+
+.stat-info {
+  @include flex(row, space-between, center);
+  gap: 5px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.stat-quantity {
+  text-align: right;
+}
