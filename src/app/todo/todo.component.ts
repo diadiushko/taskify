@@ -14,7 +14,6 @@ export class TodoComponent {
 
   onChange() {
     const todosCopy = [...this.todosService.todos];
-    console.log(todosCopy, this.todo)
     todosCopy[this.todo.id - 1] = this.todo;
     this.todosService.todos = todosCopy;
   }

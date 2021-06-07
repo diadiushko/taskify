@@ -33,7 +33,6 @@ export class TodoCreateFormComponent implements OnInit {
 
     this.todosService.addTodo(todo)
       .subscribe(todo => {
-        console.log(todo)
         this.todosService.todos = this.todosService.todos.concat(todo);
       });
 

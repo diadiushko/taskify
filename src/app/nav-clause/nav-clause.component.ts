@@ -16,8 +16,7 @@ export class NavClauseComponent {
 
   @Input() buttonInfo!: NavButton
 
-  constructor(public todosService: TodosService, public element: ElementRef, private componentFactoryResolver: ComponentFactoryResolver) {
-  }
+  constructor(public todosService: TodosService, public element: ElementRef, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   onClick(): void {
     const elementTitle = this.element.nativeElement.innerText;
