@@ -23,7 +23,7 @@ export class NavClauseComponent {
     const elementTitle = this.element.nativeElement.innerText;
     switch (elementTitle) {
       case 'Git': {
-        window.open('https://www.youtube.com/', "_blank");
+        window.open('https://github.com/dyadyushko/taskify', "_blank");
         return;
       }
       case 'Create': {
