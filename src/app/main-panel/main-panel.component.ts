@@ -7,7 +7,7 @@ import {TodosService} from "../services/todos.service";
   styleUrls: ['./main-panel.component.scss']
 })
 export class MainPanelComponent {
-  sortBy: string = 'completed';
+  sortBy: string = 'date';
 
   constructor(public todosService: TodosService) {
   }

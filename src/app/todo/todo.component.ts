@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Todo} from "../app.component";
-import {TodosService} from "../services/todos.service";
+import {Todo, TodosService} from "../services/todos.service";
 
 @Component({
   selector: 'app-todo',
@@ -14,8 +13,11 @@ export class TodoComponent {
   }
 
   onChange() {
+    this.todosService.completeTodo(this.todo.id)
+      .subscribe()
+
     const todosCopy = [...this.todosService.todos];
-    todosCopy[this.todo.id] = this.todo;
+    todosCopy[this.todo.id - 1] = this.todo;
     this.todosService.todos = todosCopy;
   }
 

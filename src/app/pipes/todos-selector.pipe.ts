@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Todo} from "../app.component";
+import {Todo} from "../services/todos.service";
 
 @Pipe({
   name: 'todosSelector',

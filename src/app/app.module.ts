@@ -13,6 +13,7 @@ import { MainPanelComponent } from './main-panel/main-panel.component';
 import { PanelTypeComponent } from './panel-type/panel-type.component';
 import { TodosSelectorPipe } from './pipes/todos-selector.pipe';
 import { TodoComponent } from './todo/todo.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TodoComponent } from './todo/todo.component';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

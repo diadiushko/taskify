@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {TodosService} from "../services/todos.service";
-import {TodoType} from "../app.component";
+import {TodosService, TodoType} from "../services/todos.service";
 
 @Component({
   selector: 'app-stat-block',

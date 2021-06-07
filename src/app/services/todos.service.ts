@@ -1,12 +1,27 @@
 import {Injectable} from '@angular/core';
-import {Todo, TodoType} from "../app.component";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
+export interface Todo {
+  id: number
+  name: string
+  completed: boolean
+  type: string
+  date: Date
+}
+
+export interface TodoType {
+  type: string,
+  color: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TodosService {
+
   todoTypes: TodoType[] = [
     {type: 'urgent', color: '#992828'},
     {type: 'high', color: '#3e8020'},
@@ -22,7 +37,41 @@ export class TodosService {
     {id: 4, name: 'fifth', completed: true, type: 'urgent', date: new Date()}
   ]
 
-  addTodo(todo: Todo) {
-    this.todos = this.todos.concat(todo);
+  constructor(private http: HttpClient) {
   }
+
+  fetchTodos(): Observable<Todo[]> {
+    return this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/todos', {
+      params: new HttpParams().set('userId', 1)
+    })
+      .pipe(map(todos => todos.map(todo => {
+        return {
+          id: todo.id,
+          name: todo.title,
+          completed: todo.completed,
+          type: _randomTodoType(),
+          date: new Date()
+        } as Todo
+      })))
+  }
+
+  addTodo(todo: Todo): Observable<Todo>{
+    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo, {
+      headers: new HttpHeaders({
+        'MyCustomHeader': Math.random().toString()
+      })
+    })
+  }
+
+  completeTodo(id: number): Observable<Todo> {
+    return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+      completed: true
+    })
+  }
+}
+
+function _randomTodoType() {
+  const types = ['urgent', 'high', 'medium', 'low'];
+
+  return types[Math.round(Math.random() * 3)]
 }

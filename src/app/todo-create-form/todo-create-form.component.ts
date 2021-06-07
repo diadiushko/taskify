@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {TodosService} from "../services/todos.service";
-import {Todo} from "../app.component";
+import {Todo, TodosService} from "../services/todos.service";
 
 @Component({
   selector: 'app-todo-create-form',
@@ -25,15 +24,19 @@ export class TodoCreateFormComponent implements OnInit {
 
   onSubmit() {
     const todo: Todo = {
-      id: this.todosService.todos.length,
+      id: this.todosService.todos.length + 1,
       name: this.form.get('name')?.value,
       completed: false,
       type: this.form.get('type')?.value,
       date: new Date()
     }
-    this.todosService.addTodo(todo);
 
-    this.form.get('name')?.reset();
+    this.todosService.addTodo(todo)
+      .subscribe(todo => {
+        this.todosService.todos = this.todosService.todos.concat(todo);
+      });
+
+    this.modalRemove();
   }
 
   modalRemove() {

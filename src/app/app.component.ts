@@ -1,18 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TodosService} from "./services/todos.service";
-
-export interface Todo {
-  id: number
-  name: string
-  completed: boolean
-  type: string
-  date: Date
-}
-
-export interface TodoType {
-  type: string,
-  color: string
-}
 
 @Component({
   selector: 'app-root',
@@ -20,9 +7,16 @@ export interface TodoType {
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(public todosService: TodosService) {
+  }
+
+  ngOnInit() {
+    this.todosService.fetchTodos()
+      .subscribe(todos => {
+        this.todosService.todos = todos;
+      })
   }
 
 }
