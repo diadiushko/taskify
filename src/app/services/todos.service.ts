@@ -55,23 +55,20 @@ export class TodosService {
       })))
   }
 
-  addTodo(todo: Todo): Observable<Todo>{
+  addTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo, {
       headers: new HttpHeaders({
         'MyCustomHeader': Math.random().toString()
       })
     })
-  }
-
-  completeTodo(id: number): Observable<Todo> {
-    return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-      completed: true
-    })
+      .pipe(map(todo => {
+        todo.id = this.todos.length + 1;
+        return todo
+      }))
   }
 }
 
 function _randomTodoType() {
   const types = ['urgent', 'high', 'medium', 'low'];
-
   return types[Math.round(Math.random() * 3)]
 }

@@ -24,7 +24,7 @@ export class TodoCreateFormComponent implements OnInit {
 
   onSubmit() {
     const todo: Todo = {
-      id: this.todosService.todos.length + 1,
+      id: this.todosService.todos.length,
       name: this.form.get('name')?.value,
       completed: false,
       type: this.form.get('type')?.value,
@@ -33,6 +33,7 @@ export class TodoCreateFormComponent implements OnInit {
 
     this.todosService.addTodo(todo)
       .subscribe(todo => {
+        console.log(todo)
         this.todosService.todos = this.todosService.todos.concat(todo);
       });
 
