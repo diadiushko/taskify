@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, ElementRef, Input, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ComponentFactoryResolver, Input, ViewChild, ViewContainerRef} from '@angular/core';
 import {NavButton} from "../side-bar/side-bar.component";
 import {TodosService} from "../services/todos.service";
 import {TodoCreateFormComponent} from "../todo-create-form/todo-create-form.component";
@@ -10,30 +10,19 @@ import {TodoCreateFormComponent} from "../todo-create-form/todo-create-form.comp
 })
 
 export class NavClauseComponent {
-  isOpen: boolean = false
   @ViewChild('modalRoot', {read: ViewContainerRef})
   modalRoot!: ViewContainerRef
 
   @Input() buttonInfo!: NavButton
 
-  constructor(public todosService: TodosService, public element: ElementRef, private componentFactoryResolver: ComponentFactoryResolver) {}
-
-  onClick(): void {
-    const elementTitle = this.element.nativeElement.innerText;
-    switch (elementTitle) {
-      case 'Git': {
-        window.open('https://github.com/dyadyushko/taskify', "_blank");
-        return;
-      }
-      case 'Create': {
-        this.openModal();
-        return;
-      }
-    }
-    this.isOpen = !this.isOpen;
+  constructor(
+    public todosService: TodosService,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {
   }
 
-  private openModal() {
+
+  openModal() {
     const resolver = this.componentFactoryResolver.resolveComponentFactory(TodoCreateFormComponent);
     this.modalRoot.createComponent(resolver);
   }

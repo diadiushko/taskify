@@ -3,7 +3,8 @@ import {Todo} from "../services/todos.service";
 
 
 @Pipe({
-  name: 'compTodoCounter'
+  name: 'compTodoCounter',
+  pure: false
 })
 export class CompleteTodoCounterPipe implements PipeTransform {
 

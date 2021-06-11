@@ -3,10 +3,12 @@ import {Component} from '@angular/core';
 export interface NavButton {
   imgUrl: string
   name: string
+  isOpen?: boolean
   addition?: {
     color: string
     done: boolean
   }
+  onClick: Function
 }
 
 @Component({
@@ -24,6 +26,10 @@ export class SideBarComponent {
     {
       imgUrl: 'assets/images/todo.svg',
       name: 'Todos',
+      isOpen: false,
+      onClick() {
+        this.isOpen = !this.isOpen;
+      },
       addition: {
         color: '#A63737',
         done: false
@@ -32,6 +38,10 @@ export class SideBarComponent {
     {
       imgUrl: 'assets/images/checked.svg',
       name: 'Done',
+      isOpen: false,
+      onClick() {
+        this.isOpen = !this.isOpen;
+      },
       addition: {
         color: '#5073A8',
         done: true
@@ -39,11 +49,18 @@ export class SideBarComponent {
     },
     {
       imgUrl: 'assets/images/plus.svg',
-      name: 'Create'
+      name: 'Create',
+      onClick(cb: Function) {
+        cb();
+      },
     },
     {
       imgUrl: 'assets/images/github.svg',
-      name: 'Git'
+      name: 'Git',
+      onClick() {
+        window.open('https://github.com/dyadyushko/taskify', "_blank");
+        return;
+      },
     }
   ]
 

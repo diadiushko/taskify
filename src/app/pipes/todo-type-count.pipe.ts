@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {Todo} from "../services/todos.service";
 
 @Pipe({
-  name: 'todoTypeCount'
+  name: 'todoTypeCount',
+  pure: false
 })
 export class TodoTypeCountPipe implements PipeTransform {
 

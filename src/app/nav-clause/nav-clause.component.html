@@ -1,6 +1,6 @@
 <div class="container" #modalRoot>
 
-  <div class="nav-button" (click)="onClick()">
+  <div class="nav-button" (click)="buttonInfo.onClick(openModal.bind(this))">
     <img [src]="buttonInfo.imgUrl" alt="nav button">
     <span class="nav-text">{{buttonInfo.name}}</span>
     <span class="nav-add" *ngIf="buttonInfo.addition"
@@ -9,7 +9,7 @@
     </span>
   </div>
 
-  <div class="nav-stats" *ngIf="buttonInfo.addition" [class.active]="isOpen">
+  <div class="nav-stats" *ngIf="buttonInfo.addition" [class.active]="buttonInfo.isOpen">
     <app-stat-block *ngFor="let type of todosService.todoTypes" [typeInfo]="type"
                     [done]="buttonInfo.addition.done"></app-stat-block>
   </div>

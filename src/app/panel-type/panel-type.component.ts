@@ -10,6 +10,7 @@ export class PanelTypeComponent {
 
   @Input() todoType!: TodoType
   @Input() sortBy!: string
+  @Input() searchField!: string
 
   constructor(public todosService: TodosService) {
   }

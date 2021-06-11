@@ -11,10 +11,4 @@ export class TodoComponent {
 
   constructor(public todosService: TodosService) {
   }
-
-  onChange() {
-    const todosCopy = [...this.todosService.todos];
-    todosCopy[this.todo.id - 1] = this.todo;
-    this.todosService.todos = todosCopy;
-  }
 }

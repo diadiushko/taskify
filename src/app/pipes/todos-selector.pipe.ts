@@ -17,7 +17,7 @@ export class TodosSelectorPipe implements PipeTransform {
           return todo1.completed < todo2.completed ? 1 : -1;
         }
         case 'name': {
-          return todo1.name > todo2.name ? 1 : -1;
+          return todo1.title > todo2.title ? 1 : -1;
         }
         default:
           return 1

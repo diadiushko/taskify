@@ -9,11 +9,12 @@ import {CompleteTodoCounterPipe} from './pipes/complete-todo-counter.pipe';
 import {StatBlockComponent} from './stat-block/stat-block.component';
 import {TodoTypeCountPipe} from './pipes/todo-type-count.pipe';
 import {TodoCreateFormComponent} from './todo-create-form/todo-create-form.component';
-import { MainPanelComponent } from './main-panel/main-panel.component';
-import { PanelTypeComponent } from './panel-type/panel-type.component';
-import { TodosSelectorPipe } from './pipes/todos-selector.pipe';
-import { TodoComponent } from './todo/todo.component';
+import {MainPanelComponent} from './main-panel/main-panel.component';
+import {PanelTypeComponent} from './panel-type/panel-type.component';
+import {TodosSelectorPipe} from './pipes/todos-selector.pipe';
+import {TodoComponent} from './todo/todo.component';
 import {HttpClientModule} from "@angular/common/http";
+import {SearchPipe} from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {HttpClientModule} from "@angular/common/http";
     MainPanelComponent,
     PanelTypeComponent,
     TodosSelectorPipe,
-    TodoComponent
+    TodoComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
