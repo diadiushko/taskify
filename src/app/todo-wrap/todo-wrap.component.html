@@ -1,0 +1,23 @@
+<div class="todo-wrap" >
+  <div class="todo" *ngIf="todo; else loading">
+    <h2>{{todo.title}}</h2>
+    <span>Type:
+      <span [style.color]="todosService.getColorToType(todo.type)">
+        {{todo.type}}
+      </span>
+    </span>
+
+    <span>Completed: <span
+      [style.color]="todo.completed ? 'green' : '#992828'">
+      {{todo.completed ? 'Yes' : 'No'}}
+      </span>
+    </span>
+
+    <span>Date Of Creation: {{todo.date | date}}</span>
+    <button (click)="toMainPage()">Back</button>
+  </div>
+
+  <ng-template #loading>
+    <span class="loading">loading...</span>
+  </ng-template>
+</div>

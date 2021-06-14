@@ -1,7 +1,6 @@
-import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Todo, TodosService} from "../services/todos.service";
-import {Subscription} from "rxjs";
+import {TodosService} from "../services/todos.service";
 
 @Component({
   selector: 'app-todo-create-form',
@@ -9,28 +8,20 @@ import {Subscription} from "rxjs";
   styleUrls: ['./todo-create-form.component.scss']
 })
 
-export class TodoCreateFormComponent implements OnInit, OnDestroy {
+export class TodoCreateFormComponent implements OnInit {
   form!: FormGroup
-  sub$!: Subscription
-  todo!: Todo;
 
-  constructor(public todosService: TodosService, private elementRef: ElementRef) {
-  }
+  constructor(public todosService: TodosService, private elementRef: ElementRef) {}
 
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       type: new FormControl('medium', Validators.required)
     })
-
-    this.sub$ = this.todosService.addTodo(this.todo)
-      .subscribe();
   }
 
-
   onSubmit() {
-    this.todo = {
+    const todo = {
       id: this.todosService.todos.length + 1,
       title: this.form.get('name')?.value,
       completed: false,
@@ -38,14 +29,9 @@ export class TodoCreateFormComponent implements OnInit, OnDestroy {
       date: new Date()
     }
 
-    console.log(this.todosService.todos)
-    this.todosService.todos.push(this.todo)
+    this.todosService.addTodo(todo)
 
     this.modalRemove();
-  }
-
-  ngOnDestroy() {
-    this.sub$.unsubscribe();
   }
 
   modalRemove() {

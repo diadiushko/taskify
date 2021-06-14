@@ -8,10 +8,11 @@
   @include flex(row, flex-start, flex-start);
   position: relative;
 
-  span {
+  a {
     font-family: Poppins, sans-serif;
     font-size: 2rem;
     font-weight: 300;
+    color: white;
   }
 
   sub {

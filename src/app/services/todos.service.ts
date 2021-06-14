@@ -23,7 +23,13 @@ export interface TodoType {
 
 export class TodosService {
 
-  todos: Todo[] = []
+  todos: Todo[] = [{
+    id: 1,
+    type: 'urgent',
+    title: 'something',
+    completed: false,
+    date: new Date(),
+  }]
 
   todoTypes: TodoType[] = [
     {type: 'urgent', color: '#992828'},
@@ -31,8 +37,6 @@ export class TodosService {
     {type: 'medium', color: '#515151'},
     {type: 'low', color: '#4551b9'}
   ]
-
-  // todos: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([])
 
   constructor(private http: HttpClient) {}
 
@@ -50,16 +54,16 @@ export class TodosService {
       })))
   }
 
-  addTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(environment.TODOS_URL, todo, {
-      headers: new HttpHeaders({
-        'MyCustomHeader': Math.random().toString()
-      })
-    })
-      .pipe(map(todo => {
-        todo.id = 4;
-        return todo
-      }))
+  addTodo(todo: Todo): void {
+    this.todos.push(todo)
+  }
+
+  getTodoById(id: number): Todo {
+    return this.todos[id - 1];
+  }
+
+  getColorToType(type: string): string {
+    return this.todoTypes.find(regedType => regedType.type === type)!.color;
   }
 }
 

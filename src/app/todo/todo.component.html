@@ -1,7 +1,7 @@
 <div class="todo">
   <input [id]="'todo' + todo.id" class="todo-checkbox" type="checkbox" [(ngModel)]="todo.completed">
   <label [for]="'todo' + todo.id"><span></span></label>
-  <span>{{todo.title}}</span>
+  <a [routerLink]="[todo.id]">{{todo.title}}</a>
   <sub>{{todo.date | date: 'd/m/yy hh:mm'}}</sub>
 </div>
 

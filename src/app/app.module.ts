@@ -15,6 +15,8 @@ import {TodosSelectorPipe} from './pipes/todos-selector.pipe';
 import {TodoComponent} from './todo/todo.component';
 import {HttpClientModule} from "@angular/common/http";
 import {SearchPipe} from './pipes/search.pipe';
+import { TodoWrapComponent } from './todo-wrap/todo-wrap.component';
+import {TodoRoutingRouter} from "./todo-routing.router";
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import {SearchPipe} from './pipes/search.pipe';
     TodosSelectorPipe,
     TodoComponent,
     SearchPipe,
+    TodoWrapComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TodoRoutingRouter
   ],
   providers: [],
   bootstrap: [AppComponent]

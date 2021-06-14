@@ -20,7 +20,7 @@ nav {
   @include flex(row, space-between, center);
   column-gap: 25px;
 
-  h1 {
+  a {
     color: white;
     font-family: Staatliches, sans-serif;
     font-size: 3.6rem;

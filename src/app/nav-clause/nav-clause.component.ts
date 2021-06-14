@@ -27,6 +27,3 @@ export class NavClauseComponent {
     this.modalRoot.createComponent(resolver);
   }
 }
-
-
-
